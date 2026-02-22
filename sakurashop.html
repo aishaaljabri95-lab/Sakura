@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ساكورا شوب | Sakura Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* تصميم ساكورا (الكرز) */
+        :root {
+            --primary-color: #ffb7c5; /* وردي ساكورا فاتح */
+            --dark-pink: #ff69b4; /* وردي داكن */
+            --white: #ffffff;
+            --text-color: #4a4a4a;
+            --bg-gradient: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 100%);
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg-gradient);
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+        }
+
+        /* الهيدر */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--dark-pink);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span { color: #333; margin-left: 5px; }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--dark-pink); }
+
+        .cart-btn {
+            background-color: var(--dark-pink);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            border: none;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        /* الأقسام */
+        section { padding: 3rem 2rem; max-width: 1200px; margin: 0 auto; }
+        
+        h2 {
+            text-align: center;
+            color: var(--dark-pink);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '🌸';
+            display: block;
+            font-size: 1.5rem;
+        }
+
+        /* بطاقات المنتجات */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border: 1px solid var(--primary-color);
+        }
+
+        .card:hover { transform: translateY(-5px); }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            color: var(--dark-pink);
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: block;
+            margin: 10px 0;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover { background-color: var(--dark-pink); color: white; }
+
+        /* نموذج الدفع */
+        .checkout-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+            border: 2px solid var(--primary-color);
+        }
+
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        /* الفوتر */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر -->
+    <header>
+        <div class="logo">ساكورا <span>شوب</span> 🌸</div>
+        <nav>
+            <ul>
+                <li><a href="#electronics">الأجهزة الإلكترونية</a></li>
+                <li><a href="#programming">البرمجة</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+        </nav>
+        <button class="cart-btn" onclick="toggleCart()">
+            السلة 🛒 <span id="cart-count">(0)</span>
+        </button>
+    </header>
+
+    <!-- قسم الأجهزة الإلكترونية -->
+    <section id="electronics">
+        <h2>الأجهزة الإلكترونية المميزة</h2>
+        <div class="products-grid" id="electronics-list">
+            <!-- سيتم إضافة المنتجات هنا عبر JS -->
+        </div>
+    </section>
+
+    <!-- قسم البرمجة -->
+    <section id="programming">
+        <h2>خدمات البرمجة والتطوير</h2>
+        <div class="products-grid">
+            <div class="card">
+                <h3>تصميم موقع ويب</h3>
+                <p>تصميم متجاوب واحترافي حسب الطلب.</p>
+                <span class="price">500 ريال</span>
+                <button class="btn" onclick="addToCart('تصميم موقع ويب', 500)">اطلب الآن</button>
+            </div>
+            <div class="card">
+                <h3>برمجة تطبيق جوال</h3>
+                <p>تطبيقات_native_ للاندرويد والايفون.</p>
+                <span class="price">1500 ريال</span>
+                <button class="btn" onclick="addToCart('برمجة تطبيق جوال', 1500)">اطلب الآن</button>
+            </div>
+            <div class="card">
+                <h3>حل واجبات برمجية</h3>
+                <p>مساعدة في مشاريع البرمجة (Python, C++, Java).</p>
+                <span class="price">100 ريال</span>
+                <button class="btn" onclick="addToCart('حل واجب برمجة', 100)">اطلب الآن</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الدفع والتوصيل (مخفي يظهر عند الضغط على السلة) -->
+    <section id="cart-section" style="display: none;">
+        <h2>إتمام الشراء والدفع</h2>
+        <div class="checkout-form">
+            <h3>عنوان التوصيل</h3>
+            <div class="form-group">
+                <label>الاسم بالكامل</label>
+                <input type="text" placeholder="أدخل اسمك">
+            </div>
+            <div class="form-group">
+                <label>العنوان</label>
+                <input type="text" placeholder="رقم الهاتف والعنوان">
+            </div>
+            <div class="form-group">
+                <label>طريقة التوصيل</label>
+                <select>
+                    <option>توصيل سريع (20 ريال)</option>
+                    <option>استلام من المتجر (مجاني)</option>
+                </select>
+            </div>
+
+            <h3>بيانات الدفع</h3>
+            <div class="form-group">
+                <label>رقم البطاقة</label>
+                <input type="text" placeholder="**** **** **** ****">
+            </div>
+            
+            <div style="background: #fff0f5; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+                <strong>الإجمالي: </strong> <span id="total-price">0</span> ريال
+            </div>
+
+            <button class="btn" onclick="processPayment()">دفع آمن 💳</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>جميع الحقوق محفوظة لساكورا شوب &copy; 2024</p>
+        <p>تصميم وبرمجة 🌸</p>
+    </footer>
+
+    <script>
+        // بيانات المنتجات (يمكن استبدالها بقاعدة بيانات حقيقية)
+        const products = [
+            { id: 1, name: 'آيفون 15 برو', price: 4500, img: 'https://via.placeholder.com/150?text=iPhone' },
+            { id: 2, name: 'لابتوب ديل XPS', price: 3200, img: 'https://via.placeholder.com/150?text=Laptop' },
+            { id: 3, name: 'سماعات سوني', price: 450, img: 'https://via.placeholder.com/150?text=Headphones' },
+            { id: 4, name: 'ساعة آبل', price: 1200, img: 'https://via.placeholder.com/150?text=Watch' },
+            { id: 5, name: 'آيباد برو', price: 2800, img: 'https://via.placeholder.com/150?text=iPad' },
+            { id: 6, name: 'بلايستيشن 5', price: 2600, img: 'https://via.placeholder.com/150?text=PS5' }
+        ];
+
+        let cart = [];
+
+        // عرض المنتجات
+        const container = document.getElementById('electronics-list');
+        products.forEach(product => {
+            container.innerHTML += `
+                <div class="card">
+                    <img src="${product.img}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <span class="price">${product.price} ريال</span>
+                    <button class="btn" onclick="addToCart('${product.name}', ${product.price})">أضافة للسلة</button>
+                </div>
+            `;
+        });
+
+        // إضافة للسلة
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCartUI();
+            alert(`تمت إضافة ${name} للسلة!`);
+        }
+
+        // تحديث واجهة السلة
+        function updateCartUI() {
+            document.getElementById('cart-count').innerText = `(${cart.length})`;
+            
+            let total = cart.reduce((sum, item) => sum + item.price, 0);
+            document.getElementById('total-price').innerText = total;
+        }
+
+        // إظهار/إخفاء السلة والدفع
+        function toggleCart() {
+            const cartSection = document.getElementById('cart-section');
+            if (cartSection.style.display === 'none') {
+                cartSection.style.display = 'block';
+                cartSection.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                cartSection.style.display = 'none';
+            }
+        }
+
+        // محاكاة الدفع
+        function processPayment() {
+            if (cart.length === 0) {
+                alert("السلة فارغة!");
+                return;
+            }
+            alert("تم الدفع بنجاح! 🎉\nسيتم توصيل طلبك خلال 3 أيام.");
+            cart = [];
+            updateCartUI();
+            toggleCart();
+        }
+    </script>
+</body>
+</html>
